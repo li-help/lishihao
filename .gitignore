@@ -1,0 +1,57 @@
+# ============================================
+# .gitignore — 全栈项目忽略规则
+# ============================================
+
+# ---- IDE ----
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+*~
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ---- Flutter / Dart ----
+frontend/.dart_tool/
+frontend/.packages
+frontend/.pub/
+frontend/build/
+frontend/.flutter-plugins
+frontend/.flutter-plugins-dependencies
+frontend/pubspec.lock
+frontend/.metadata
+
+# ---- Java / Maven ----
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+*.class
+*.jar
+!backend/src/main/**/*.java
+
+# ---- Spring Boot ----
+backend/*.log
+backend/logs/
+
+# ---- Node (如有) ----
+node_modules/
+package-lock.json
+
+# ---- Env ----
+.env
+.env.local
+.env.production
+
+# ---- Logs ----
+*.log
+logs/
+
+# ---- Temp ----
+tmp/
+temp/
+*.tmp
