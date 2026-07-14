@@ -47,6 +47,7 @@ class _HomePageState extends State<HomePage> {
     if (bannerCount <= 1) return;
     _bannerTimer = Timer.periodic(const Duration(seconds: 3), (timer) {
       if (!mounted) return;
+      if (!_bannerController.hasClients) return;
       _currentBannerIndex = (_currentBannerIndex + 1) % bannerCount;
       _bannerController.animateToPage(
         _currentBannerIndex,
@@ -264,7 +265,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisCount: 4,
               mainAxisSpacing: DesignTokens.spacing12,
               crossAxisSpacing: DesignTokens.spacing8,
-              childAspectRatio: 1.0,
+              childAspectRatio: 0.85,
             ),
             itemCount: categories.length,
             itemBuilder: (context, index) {
@@ -280,27 +281,24 @@ class _HomePageState extends State<HomePage> {
     return InkWell(
       onTap: () {},
       splashColor: DesignTokens.primaryColor.withOpacity( 0.1),
-      child: SizedBox(
-        height: 90,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ClipOval(
-              child: AppCachedImage(
-                imageUrl: category.iconUrl,
-                width: 48,
-                height: 48,
-              ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ClipOval(
+            child: AppCachedImage(
+              imageUrl: category.iconUrl,
+              width: 32,
+              height: 32,
             ),
-            const SizedBox(height: DesignTokens.spacing8),
-            Text(
-              category.name,
-              style: DesignTokens.hintStyle,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
-        ),
+          ),
+          const SizedBox(height: DesignTokens.spacing4),
+          Text(
+            category.name,
+            style: DesignTokens.hintStyle,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'config/design_tokens.dart';
 import 'pages/main_page.dart';
 
@@ -13,15 +14,19 @@ class MyApp extends StatelessWidget {
       locale: const Locale('zh', 'CN'),
       supportedLocales: const [
         Locale('zh', 'CN'),
+        Locale('en', 'US'),
       ],
       localizationsDelegates: const [
-        DefaultMaterialLocalizations.delegate,
-        DefaultWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: DesignTokens.primaryColor,
         scaffoldBackgroundColor: DesignTokens.backgroundColor,
+        fontFamily: 'Roboto',
+        fontFamilyFallback: const ['Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', 'sans-serif'],
         appBarTheme: const AppBarTheme(
           centerTitle: false,
           elevation: 0,
